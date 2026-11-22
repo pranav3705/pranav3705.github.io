@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pranav Konreddy | Job Search Progress</title>
+<meta name="description" content="Pranav Konreddy, Data Engineer in Michigan: open to roles. Job search activity, updated after each run.">
+<meta property="og:title" content="Pranav Konreddy | Job Search Progress">
+<meta property="og:description" content="Data Engineer in Michigan, open to roles. Live job-search activity.">
+<meta property="og:url" content="https://pranav3705.github.io/progress/">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../style.css">
+<style>
+.hero h1 { font-size: clamp(2.2rem, 6.5vw, 3.6rem); }
+.asof { font: 13px/1.4 var(--font-mono); color: var(--muted); }
+.asof b { color: var(--amber); font-weight: 500; }
+.feed { display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); overflow: hidden; }
+.post { display: grid; grid-template-columns: 110px 1fr; gap: 16px; padding: 14px 18px; border-top: 1px solid var(--line); align-items: baseline; }
+.post:first-child { border-top: 0; }
+.post .d { font: 13px/1.4 var(--font-mono); color: var(--muted); font-variant-numeric: tabular-nums; }
+.post .t { min-width: 0; }
+.post .t b { color: var(--amber); font-weight: 600; }
+.empty { padding: 18px; color: var(--muted); font: 14px/1.5 var(--font-mono); }
+@media (max-width: 520px) { .post { grid-template-columns: 1fr; gap: 2px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="topbar">
+    <span class="status"><span class="dot" aria-hidden="true"></span>open to Data Engineer roles · Michigan, USA</span>
+    <nav aria-label="Site">
+      <a href="../">profile</a>
+      <a href="#activity">activity</a>
+      <a href="#updates">updates</a>
+      <a href="#contact">contact</a>
+    </nav>
+  </header>
+
+  <section class="hero" aria-labelledby="title">
+    <div class="prompt"><b>$</b> tail -f job_search.log</div>
+    <h1 id="title">Pranav Konreddy<br><span>is looking for a role</span></h1>
+    <div class="role">Data Engineer · Michigan, USA · remote, hybrid or onsite</div>
+    <p class="lede">I build SQL and PySpark ETL/ELT pipelines on Azure Databricks and AWS, with production work in <em>healthcare</em> and <em>banking</em>: lakehouse layers, incremental loads, data quality checks and reliable production jobs. This page tracks my search and updates after each round of applications.</p>
+    <div class="actions">
+      <a class="btn primary" href="https://www.linkedin.com/in/kpranavsai" target="_blank" rel="noopener">Message me on LinkedIn</a>
+      <a class="btn" href="../">View full profile</a>
+    </div>
+  </section>
+
+  <section id="activity" aria-labelledby="act-h">
+    <h2 id="act-h">Activity <span class="mono">// applications sent</span></h2>
+    <div class="asof">as of <b id="asof">—</b></div>
+    <div class="metrics">
+      <div class="metric"><span class="num" id="s-today">—</span><span class="what">applications today</span></div>
+      <div class="metric"><span class="num" id="s-week">—</span><span class="what">this week</span></div>
+      <div class="metric"><span class="num" id="s-month">—</span><span class="what">this month</span></div>
+      <div class="metric"><span class="num" id="s-total">—</span><span class="what">total applications</span></div>
+      <div class="metric"><span class="num" id="s-int">—</span><span class="what">interviews</span></div>
+    </div>
+  </section>
+
+  <section id="updates" aria-labelledby="up-h">
+    <h2 id="up-h">Progress updates <span class="mono">// newest first</span></h2>
+    <div class="feed" id="feed"><div class="empty">Loading updates…</div></div>
+  </section>
+
+  <section id="contact" class="contact" aria-labelledby="contact-h">
+    <h2 id="contact-h">Hiring a Data Engineer?</h2>
+    <p>I'm available for full-time or contract Data Engineer roles. Message me on LinkedIn, or see my code on GitHub.</p>
+    <div class="links">
+      <div class="link-row">
+        <div class="meta"><span class="k">LinkedIn</span><a class="v" href="https://www.linkedin.com/in/kpranavsai" target="_blank" rel="noopener">linkedin.com/in/kpranavsai</a></div>
+      </div>
+      <div class="link-row">
+        <div class="meta"><span class="k">GitHub</span><a class="v" href="https://github.com/pranav3705" target="_blank" rel="noopener">github.com/pranav3705</a></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2026 Pranav Konreddy</span>
+    <span><a href="../">pranav3705.github.io</a></span>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  function fmt(iso) { var p = iso.split('-'); return months[+p[1] - 1] + ' ' + (+p[2]) + ', ' + p[0]; }
+  function set(id, v) { document.getElementById(id).textContent = v; }
+  fetch('stats.json', { cache: 'no-store' }).then(function (r) { return r.json(); }).then(function (s) {
+    set('asof', fmt(s.as_of));
+    set('s-today', s.today); set('s-week', s.this_week); set('s-month', s.this_month);
+    set('s-total', s.total_applications); set('s-int', s.interviews);
+    var feed = document.getElementById('feed'); feed.innerHTML = '';
+    var posts = (s.daily || []).filter(function (d) { return d.applications > 0; });
+    if (!posts.length) { feed.innerHTML = '<div class="empty">No updates yet.</div>'; return; }
+    posts.forEach(function (d) {
+      var row = document.createElement('div'); row.className = 'post';
+      var n = d.applications;
+      row.innerHTML = '<span class="d"></span><span class="t">Applied to <b></b> Data Engineer ' + (n === 1 ? 'role' : 'roles') + '.</span>';
+      row.querySelector('.d').textContent = fmt(d.date);
+      row.querySelector('b').textContent = n;
+      feed.appendChild(row);
+    });
+  }).catch(function () {
+    document.getElementById('feed').innerHTML = '<div class="empty">Updates could not load. Refresh the page to try again.</div>';
+  });
+})();
+</script>
+</body>
+</html>
