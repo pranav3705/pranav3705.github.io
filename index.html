@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta property="og:title" content="Pranav Konreddy | Data Engineer">
+<meta property="og:description" content="Data Engineer: Azure Databricks, AWS, PySpark, SQL, Snowflake and dbt.">
+<meta property="og:url" content="https://pranav3705.github.io/">
+<meta property="og:type" content="website">
+<title>Pranav Konreddy | Data Engineer</title>
+<meta name="description" content="Pranav Konreddy, Data Engineer: Azure Databricks, AWS, PySpark, SQL, Snowflake and dbt.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<style>
+/* Layout: one narrow column read like a pipeline run: source → bronze → silver → gold, then a job log of roles. Deliberately dark-only. */
+:root {
+  --bg: #0d1218;
+  --surface: #141b23;
+  --line: #24303c;
+  --fg: #dbe3ea;
+  --muted: #8796a5;
+  --amber: #f0a64a;
+  --teal: #5cc5d2;
+  --ok: #6fcf97;
+  --font-display: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 16px/1.65 var(--font-body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 48px 48px;
+  background-position: -1px -1px;
+  background-attachment: fixed;
+}
+body::after {
+  content: ""; position: fixed; inset: 0; pointer-events: none; z-index: -1;
+  background: radial-gradient(ellipse at 50% 0%, transparent 0%, var(--bg) 70%);
+}
+.wrap { max-width: 880px; margin: 0 auto; padding-block: 48px 64px; display: flex; flex-direction: column; gap: 72px; position: relative; }
+a { color: var(--teal); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 3px; }
+:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; border-radius: 4px; }
+
+.mono { font-family: var(--font-mono); }
+.label { font: 500 12px/1.4 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; margin: 0; }
+h2 { font-size: 1.5rem; font-weight: 600; display: flex; align-items: baseline; gap: 12px; }
+h2 .mono { font-size: .8rem; color: var(--amber); font-weight: 500; }
+section { display: flex; flex-direction: column; gap: 24px; }
+
+/* Top bar */
+.topbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; font: 13px/1 var(--font-mono); color: var(--muted); }
+.status { display: inline-flex; align-items: center; gap: 8px; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 0 0 var(--ok); animation: pulse 2.4s ease-out infinite; }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(111,207,151,.55); } 70%,100% { box-shadow: 0 0 0 8px rgba(111,207,151,0); } }
+.topbar nav { display: flex; gap: 18px; flex-wrap: wrap; }
+.topbar nav a { color: var(--muted); }
+.topbar nav a:hover { color: var(--fg); }
+
+/* Hero */
+.hero { display: flex; flex-direction: column; gap: 22px; }
+.prompt { font: 14px/1.5 var(--font-mono); color: var(--muted); }
+.prompt b { color: var(--amber); font-weight: 500; }
+.hero h1 { font-size: clamp(2.6rem, 8vw, 4.4rem); line-height: 1.02; font-weight: 700; letter-spacing: -.02em; }
+.hero h1 span { color: var(--amber); }
+.role { font: 500 clamp(1rem, 2.6vw, 1.2rem)/1.5 var(--font-mono); color: var(--teal); }
+.lede { max-width: 62ch; color: var(--fg); font-size: 1.06rem; margin: 0; }
+.lede em { font-style: normal; color: var(--amber); }
+.actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); color: var(--fg); font: 500 14px/1 var(--font-mono); cursor: pointer; transition: border-color .15s, color .15s; }
+.btn:hover { border-color: var(--amber); color: var(--amber); text-decoration: none; }
+.btn.primary { background: var(--amber); color: #1a1206; border-color: var(--amber); }
+.btn.primary:hover { color: #1a1206; filter: brightness(1.08); }
+.btn svg { width: 16px; height: 16px; fill: currentColor; }
+
+/* Medallion pipeline */
+.pipeline { border: 1px solid var(--line); border-radius: 10px; background: var(--surface); padding: 20px; overflow-x: auto; }
+.pipe-row { display: grid; grid-template-columns: repeat(4, minmax(130px, 1fr)); gap: 0; min-width: 600px; align-items: stretch; }
+.stage { position: relative; padding: 14px 16px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); display: flex; flex-direction: column; gap: 6px; margin-right: 28px; }
+.stage:last-child { margin-right: 0; }
+.stage:not(:last-child)::after {
+  content: ""; position: absolute; right: -29px; top: 50%; width: 28px; height: 2px;
+  background: repeating-linear-gradient(90deg, var(--amber) 0 6px, transparent 6px 10px);
+  background-size: 20px 2px; animation: flow 1.2s linear infinite;
+}
+@keyframes flow { from { background-position: 0 0; } to { background-position: 20px 0; } }
+.stage .name { font: 600 14px/1.2 var(--font-mono); }
+.stage .desc { font-size: 13px; color: var(--muted); line-height: 1.45; }
+.stage.bronze .name { color: #d39a6a; }
+.stage.silver .name { color: #c3ccd5; }
+.stage.gold .name { color: #e8c15a; }
+.stage.src .name { color: var(--teal); }
+.pipe-foot { margin-top: 14px; font: 12px/1.5 var(--font-mono); color: var(--muted); min-width: 600px; }
+
+/* Metrics */
+.metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+.metric { background: var(--surface); padding: 18px 18px 16px; display: flex; flex-direction: column; gap: 6px; }
+.metric .num { font: 600 1.9rem/1 var(--font-display); color: var(--fg); font-variant-numeric: tabular-nums; }
+.metric .num small { font-size: .55em; color: var(--amber); margin-left: 2px; }
+.metric .what { font-size: 13px; color: var(--muted); line-height: 1.4; }
+
+/* Job log */
+.log { display: flex; flex-direction: column; gap: 0; border-left: 1px solid var(--line); margin-left: 6px; }
+.job { position: relative; padding: 0 0 36px 28px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.job:last-child { padding-bottom: 0; }
+.job::before { content: ""; position: absolute; left: -6px; top: 6px; width: 11px; height: 11px; border-radius: 50%; background: var(--bg); border: 2px solid var(--amber); }
+.job.current::before { background: var(--amber); }
+.job-head { display: flex; justify-content: space-between; gap: 6px 16px; flex-wrap: wrap; align-items: baseline; }
+.job h3 { font-size: 1.2rem; font-weight: 600; }
+.job h3 .at { color: var(--muted); font-weight: 500; }
+.when { font: 13px/1.4 var(--font-mono); color: var(--muted); font-variant-numeric: tabular-nums; }
+.project { font: 13px/1.4 var(--font-mono); color: var(--teal); }
+.job ul { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 6px; max-width: 70ch; }
+.job li::marker { color: var(--amber); content: "› "; }
+.job li { padding-left: 2px; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag { font: 12px/1 var(--font-mono); padding: 6px 8px; border: 1px solid var(--line); border-radius: 4px; color: var(--muted); background: var(--bg); }
+
+/* Projects */
+.projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.card { border: 1px solid var(--line); border-radius: 10px; background: var(--surface); padding: 20px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.card .flow { font: 13px/1.6 var(--font-mono); color: var(--teal); overflow-wrap: anywhere; }
+.card .flow i { color: var(--amber); font-style: normal; }
+.card h3 { font-size: 1.1rem; font-weight: 600; }
+.card p { margin: 0; color: var(--muted); font-size: 15px; }
+.badge { align-self: flex-start; font: 500 11px/1 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; padding: 5px 7px; border-radius: 4px; color: var(--amber); border: 1px solid rgba(240,166,74,.4); }
+
+/* Skills */
+.skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px 28px; }
+.skill-group { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.skill-group .label { color: var(--fg); }
+.skill-group .label span { color: var(--amber); }
+
+/* Education */
+.edu { display: flex; justify-content: space-between; gap: 8px 24px; flex-wrap: wrap; align-items: baseline; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); padding: 20px; }
+.edu h3 { font-size: 1.15rem; font-weight: 600; }
+.edu p { margin: 4px 0 0; color: var(--muted); }
+
+/* Contact */
+.contact { border: 1px solid var(--line); border-radius: 10px; background: var(--surface); padding: 28px; display: flex; flex-direction: column; gap: 18px; }
+.contact h2 { font-size: 1.7rem; }
+.contact p { margin: 0; color: var(--muted); max-width: 60ch; }
+.links { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+.link-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); min-width: 0; }
+.link-row .k { font: 12px/1 var(--font-mono); color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
+.link-row .v { font: 14px/1.3 var(--font-mono); color: var(--fg); overflow-wrap: anywhere; user-select: all; }
+.link-row .meta { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.copy { flex: none; font: 500 12px/1 var(--font-mono); padding: 8px 10px; border: 1px solid var(--line); border-radius: 5px; background: var(--surface); color: var(--teal); cursor: pointer; }
+.copy:hover { border-color: var(--teal); }
+footer { font: 12px/1.6 var(--font-mono); color: var(--muted); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; border-top: 1px solid var(--line); padding-top: 20px; }
+
+@media (max-width: 520px) {
+  .wrap { gap: 56px; padding-block: 28px 48px; }
+  .contact { padding: 20px; }
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="topbar">
+    <span class="status"><span class="dot" aria-hidden="true"></span>open to Data Engineer roles · Michigan, USA</span>
+    <nav aria-label="Sections">
+      <a href="#experience">experience</a>
+      <a href="#projects">projects</a>
+      <a href="#skills">skills</a>
+      <a href="#contact">contact</a>
+    </nav>
+  </header>
+
+  <section class="hero" aria-labelledby="name">
+    <div class="prompt"><b>$</b> SELECT * FROM engineers WHERE name = 'pranav';</div>
+    <h1 id="name">Pranav<br><span>Konreddy</span></h1>
+    <div class="role">Data Engineer · Azure Databricks · AWS · PySpark · SQL</div>
+    <p class="lede">I build SQL and PySpark ETL/ELT pipelines on Azure Databricks and AWS, with production work in <em>healthcare</em> and <em>banking</em>. My focus is lakehouse layers, incremental loads, data quality checks, and keeping production jobs reliable. Outside client work I've built end-to-end Snowflake + dbt and GCP + Kafka projects.</p>
+    <div class="actions">
+      <a class="btn primary" href="#contact">Get in touch</a>
+      <a class="btn" href="https://www.linkedin.com/in/kpranavsai" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+        LinkedIn
+      </a>
+      <a class="btn" href="https://github.com/pranav3705" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0C17.3 4.6 18.3 5 18.3 5c.6 1.6.2 2.8 0 3.2.9.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1 .9 2.2v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"/></svg>
+        GitHub
+      </a>
+    </div>
+  </section>
+
+  <div class="pipeline" role="img" aria-label="Medallion pipeline: 12+ sources into Bronze raw, Silver validated, Gold curated layers">
+    <div class="pipe-row">
+      <div class="stage src"><span class="name">sources</span><span class="desc">12+ healthcare &amp; claims systems</span></div>
+      <div class="stage bronze"><span class="name">bronze</span><span class="desc">raw ingestion · Auto Loader · CDC</span></div>
+      <div class="stage silver"><span class="name">silver</span><span class="desc">validated · deduped · schema checks</span></div>
+      <div class="stage gold"><span class="name">gold</span><span class="desc">curated reporting datasets</span></div>
+    </div>
+    <div class="pipe-foot">ADLS Gen2 + Delta Lake · orchestrated with ADF &amp; Databricks Workflows · governed in Unity Catalog</div>
+  </div>
+
+  <section aria-labelledby="impact">
+    <h2 id="impact">Run stats <span class="mono">// from production work</span></h2>
+    <div class="metrics">
+      <div class="metric"><span class="num">50<small>GB/day</small></span><span class="what">healthcare &amp; claims data processed from 12+ sources</span></div>
+      <div class="metric"><span class="num">~40<small>%</small></span><span class="what">less batch time with Auto Loader and CDC loads</span></div>
+      <div class="metric"><span class="num">100<small>+</small></span><span class="what">validation and reconciliation rules</span></div>
+      <div class="metric"><span class="num">8M<small>+/day</small></span><span class="what">banking transactions on Amazon EMR</span></div>
+      <div class="metric"><span class="num">~30<small>%</small></span><span class="what">faster Spark jobs through partitioning &amp; tuning</span></div>
+    </div>
+  </section>
+
+  <section id="experience" aria-labelledby="exp-h">
+    <h2 id="exp-h">Experience <span class="mono">// job log</span></h2>
+    <div class="log">
+      <article class="job current">
+        <div class="job-head">
+          <h3>Azure Databricks Data Engineer <span class="at">· DXC Technology</span></h3>
+          <span class="when">Nov 2024 – Present · USA</span>
+        </div>
+        <div class="project">Enterprise Healthcare Data Intelligence &amp; Lakehouse Platform</div>
+        <ul>
+          <li>Develop and support Azure Databricks ETL/ELT pipelines with PySpark, Spark SQL and ADF, processing 50+ GB of healthcare and claims data daily from 12+ source systems.</li>
+          <li>Designed Bronze, Silver and Gold layers in ADLS Gen2 and Delta Lake to separate raw ingestion, validated transformations and curated reporting data.</li>
+          <li>Implemented incremental ingestion with Auto Loader and CDC loads, cutting batch-processing time by about 40%.</li>
+          <li>Tuned Spark and Delta queries with partitioning, compaction, OPTIMIZE and Z-ORDER; built 100+ validation rules covering reconciliation, duplicates and schema checks.</li>
+          <li>Organized curated datasets in Unity Catalog with lineage and role-based access; diagnosed production failures with Azure Monitor and Log Analytics.</li>
+        </ul>
+        <div class="tags"><span class="tag">Azure Databricks</span><span class="tag">PySpark</span><span class="tag">Delta Lake</span><span class="tag">Auto Loader</span><span class="tag">ADF</span><span class="tag">ADLS Gen2</span><span class="tag">Unity Catalog</span><span class="tag">Azure DevOps</span></div>
+      </article>
+
+      <article class="job">
+        <div class="job-head">
+          <h3>AWS Data Engineer <span class="at">· ICICI Bank</span></h3>
+          <span class="when">Jun 2022 – Nov 2023 · India</span>
+        </div>
+        <div class="project">Banking Transaction Analytics &amp; Data Lake Modernization</div>
+        <ul>
+          <li>Built AWS Glue ETL jobs in Python, PySpark and Spark SQL to ingest, clean and validate banking transactions for risk analytics and regulatory reporting.</li>
+          <li>Ran Spark workloads on Amazon EMR over 8M+ transactions a day, reducing job runtime by about 30% through partitioning, caching and query tuning.</li>
+          <li>Organized S3 raw, processed and curated layers; used Apache Iceberg for schema evolution and Athena SQL for reconciliation.</li>
+          <li>Orchestrated Glue and EMR jobs with Airflow DAGs, and configured Reltio MDM match, merge and survivorship rules.</li>
+        </ul>
+        <div class="tags"><span class="tag">AWS Glue</span><span class="tag">S3</span><span class="tag">EMR</span><span class="tag">Athena</span><span class="tag">Iceberg</span><span class="tag">Airflow</span><span class="tag">Reltio MDM</span></div>
+      </article>
+
+      <article class="job">
+        <div class="job-head">
+          <h3>Data Analyst <span class="at">· AllState Solution Pvt Ltd</span></h3>
+          <span class="when">May 2021 – May 2022 · India</span>
+        </div>
+        <div class="project">Insurance Claims Reporting &amp; Data Warehouse Modernization</div>
+        <ul>
+          <li>Supported ETL pipelines for claims, policy and customer data using Python and SQL.</li>
+          <li>Profiled data and ran quality checks for duplicate, missing and inconsistent records before loading reporting tables.</li>
+          <li>Helped build fact and dimension tables, SQL views and stored procedures for insurance reporting.</li>
+        </ul>
+        <div class="tags"><span class="tag">SQL Server</span><span class="tag">Azure SQL</span><span class="tag">Python</span><span class="tag">Power BI</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="projects" aria-labelledby="proj-h">
+    <h2 id="proj-h">Projects <span class="mono">// personal builds</span></h2>
+    <div class="projects">
+      <article class="card">
+        <span class="badge">Personal project</span>
+        <h3>S3-to-Snowflake ELT &amp; Analytics Reporting</h3>
+        <div class="flow">S3 CSV <i>→</i> Snowpipe <i>→</i> streams/tasks <i>→</i> dbt marts <i>→</i> dashboards</div>
+        <p>Loaded CSV files from Amazon S3 into Snowflake with Snowpipe, Python and stages. Processed them with streams, tasks and dynamic tables, then modeled staging, mart and incremental layers in dbt with tests, snapshots and docs. Tuned warehouse workloads for reporting.</p>
+        <div class="tags"><span class="tag">Snowflake</span><span class="tag">dbt</span><span class="tag">Snowpipe</span><span class="tag">Python</span></div>
+      </article>
+      <article class="card">
+        <span class="badge">Personal project</span>
+        <h3>GCP + Kafka Event Streaming</h3>
+        <div class="flow">Kafka producer <i>→</i> consumer <i>→</i> Dataflow <i>→</i> BigQuery</div>
+        <p>Built a Kafka producer and consumer flow for JSON events and processed the messages through Dataflow into BigQuery, with monitoring and recovery controls.</p>
+        <div class="tags"><span class="tag">Kafka</span><span class="tag">Pub/Sub</span><span class="tag">Dataflow</span><span class="tag">BigQuery</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="skills" aria-labelledby="skills-h">
+    <h2 id="skills-h">Skills <span class="mono">// schema</span></h2>
+    <div class="skills">
+      <div class="skill-group"><span class="label"><span>›</span> Core engineering</span><div class="tags"><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">PySpark</span><span class="tag">Apache Spark</span><span class="tag">Spark SQL</span><span class="tag">ETL/ELT</span><span class="tag">CDC</span></div></div>
+      <div class="skill-group"><span class="label"><span>›</span> Cloud (professional)</span><div class="tags"><span class="tag">Azure Databricks</span><span class="tag">ADF</span><span class="tag">ADLS Gen2</span><span class="tag">Delta Lake</span><span class="tag">AWS Glue</span><span class="tag">S3</span><span class="tag">EMR</span><span class="tag">Athena</span></div></div>
+      <div class="skill-group"><span class="label"><span>›</span> Orchestration</span><div class="tags"><span class="tag">Apache Airflow</span><span class="tag">Azure Data Factory</span><span class="tag">Databricks Workflows</span><span class="tag">AWS Glue Jobs</span></div></div>
+      <div class="skill-group"><span class="label"><span>›</span> Data modeling</span><div class="tags"><span class="tag">Dimensional modeling</span><span class="tag">Star schema</span><span class="tag">Fact &amp; dimension tables</span><span class="tag">SCD Type 1 &amp; 2</span></div></div>
+      <div class="skill-group"><span class="label"><span>›</span> Warehousing</span><div class="tags"><span class="tag">Lakehouse</span><span class="tag">Curated data layers</span><span class="tag">Apache Iceberg</span><span class="tag">SQL transformations</span></div></div>
+      <div class="skill-group"><span class="label"><span>›</span> Quality &amp; governance</span><div class="tags"><span class="tag">SQL reconciliation</span><span class="tag">Data validation</span><span class="tag">Data profiling</span><span class="tag">Unity Catalog</span><span class="tag">Lineage</span></div></div>
+      <div class="skill-group"><span class="label"><span>›</span> DevOps &amp; monitoring</span><div class="tags"><span class="tag">Git</span><span class="tag">Azure DevOps</span><span class="tag">CI/CD</span><span class="tag">Azure Monitor</span><span class="tag">Production troubleshooting</span></div></div>
+      <div class="skill-group"><span class="label"><span>›</span> Personal projects</span><div class="tags"><span class="tag">Snowflake</span><span class="tag">dbt</span><span class="tag">Kafka</span><span class="tag">Dataflow</span><span class="tag">BigQuery</span><span class="tag">Pub/Sub</span></div></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="edu-h">
+    <h2 id="edu-h">Education</h2>
+    <div class="edu">
+      <div>
+        <h3>Master of Science in Computer Science</h3>
+        <p>Lawrence Technological University · Southfield, Michigan</p>
+      </div>
+      <span class="when">Dec 2025</span>
+    </div>
+  </section>
+
+  <section id="contact" class="contact" aria-labelledby="contact-h">
+    <h2 id="contact-h">Let's talk data</h2>
+    <p>I'm looking for Data Engineer roles: remote, hybrid or onsite. Email or LinkedIn is the best way to reach me.</p>
+    <div class="links">
+      <div class="link-row">
+        <div class="meta"><span class="k">Email</span><span class="v" id="email-val">pranavsaik16@gmail.com</span></div>
+        <button class="copy" type="button" id="copy-email" data-copy="pranavsaik16@gmail.com">Copy</button>
+      </div>
+      <div class="link-row">
+        <div class="meta"><span class="k">LinkedIn</span><a class="v" href="https://www.linkedin.com/in/kpranavsai" target="_blank" rel="noopener">linkedin.com/in/kpranavsai</a></div>
+        <button class="copy" type="button" id="copy-li" data-copy="https://www.linkedin.com/in/kpranavsai">Copy</button>
+      </div>
+      <div class="link-row">
+        <div class="meta"><span class="k">GitHub</span><a class="v" href="https://github.com/pranav3705" target="_blank" rel="noopener">github.com/pranav3705</a></div>
+        <button class="copy" type="button" id="copy-gh" data-copy="https://github.com/pranav3705">Copy</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2026 Pranav Konreddy</span>
+    <span>pipeline status: <span style="color:var(--ok)">SUCCEEDED</span></span>
+  </footer>
+</div>
+
+<script>
+document.querySelectorAll('.copy').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var text = btn.getAttribute('data-copy');
+    var done = function () { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy'; }, 1600); };
+    var fallback = function () {
+      var target = btn.parentElement.querySelector('.v');
+      var range = document.createRange(); range.selectNodeContents(target);
+      var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(range);
+      btn.textContent = 'Selected';
+      setTimeout(function () { btn.textContent = 'Copy'; }, 1600);
+    };
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, fallback);
+      } else { fallback(); }
+    } catch (e) { fallback(); }
+  });
+});
+</script>
+</body>
+</html>
