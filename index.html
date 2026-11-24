@@ -3,208 +3,287 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta property="og:title" content="Pranav Konreddy | Data Engineer">
-<meta property="og:description" content="Data Engineer: Azure Databricks, AWS, PySpark, SQL, Snowflake and dbt.">
-<meta property="og:url" content="https://pranav3705.github.io/">
-<meta property="og:type" content="website">
 <title>Pranav Konreddy | Data Engineer</title>
-<meta name="description" content="Pranav Konreddy, Data Engineer: Azure Databricks, AWS, PySpark, SQL, Snowflake and dbt.">
+<meta name="description" content="Pranav Konreddy, Data Engineer in Michigan. Azure Databricks, AWS, PySpark and SQL pipelines for healthcare and banking data.">
+<meta name="theme-color" content="#0b1518">
+<link rel="canonical" href="https://pranav3705.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://pranav3705.github.io/">
+<meta property="og:title" content="Pranav Konreddy | Data Engineer">
+<meta property="og:description" content="Azure Databricks, AWS, PySpark and SQL pipelines for healthcare and banking data.">
+<meta property="og:image" content="https://pranav3705.github.io/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Pranav Konreddy","jobTitle":"Data Engineer","url":"https://pranav3705.github.io/","address":{"@type":"PostalAddress","addressRegion":"Michigan","addressCountry":"US"},"alumniOf":{"@type":"CollegeOrUniversity","name":"Lawrence Technological University"},"sameAs":["https://www.linkedin.com/in/kpranavsai","https://github.com/pranav3705"]}
+</script>
+<!-- page -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..800&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<div class="wrap">
-  <header class="topbar">
-    <span class="status"><span class="dot" aria-hidden="true"></span>open to Data Engineer roles · Michigan, USA</span>
+<a class="skip" href="#top">Skip to content</a>
+<header class="bar">
+  <div class="inner">
+    <a class="me" href="#top">Pranav Konreddy</a>
     <nav aria-label="Sections">
-      <a href="#experience">experience</a>
-      <a href="#projects">projects</a>
-      <a href="#skills">skills</a>
-      <a href="#contact">contact</a>
+      <a href="#pipelines">Pipelines</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#ask">SQL</a>
+      <a href="#contact">Contact</a>
     </nav>
-  </header>
+  </div>
+</header>
 
-  <section class="hero" aria-labelledby="name">
-    <div class="prompt"><b>$</b> SELECT * FROM engineers WHERE name = 'pranav';</div>
-    <h1 id="name">Pranav<br><span>Konreddy</span></h1>
-    <div class="role">Data Engineer · Azure Databricks · AWS · PySpark · SQL</div>
-    <p class="lede">I build SQL and PySpark ETL/ELT pipelines on Azure Databricks and AWS, with production work in <em>healthcare</em> and <em>banking</em>. My focus is lakehouse layers, incremental loads, data quality checks, and keeping production jobs reliable. Outside client work I've built end-to-end Snowflake + dbt and GCP + Kafka projects.</p>
-    <div class="actions">
-      <a class="btn primary" href="#contact">Get in touch</a>
-      <a class="btn" href="https://www.linkedin.com/in/kpranavsai" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
-        LinkedIn
-      </a>
-      <a class="btn" href="https://github.com/pranav3705" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0C17.3 4.6 18.3 5 18.3 5c.6 1.6.2 2.8 0 3.2.9.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1 .9 2.2v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"/></svg>
-        GitHub
-      </a>
+<main id="top">
+  <div class="inner hero">
+    <h1>Pranav Konreddy</h1>
+    <div class="about">
+      <p>Data Engineer building SQL and PySpark pipelines on Azure Databricks and AWS, with production work on healthcare and banking data.</p>
+      <div class="facts">
+        <span>Michigan, USA. Remote, hybrid or onsite.</span>
+        <div class="row">
+          <a class="btn solid" href="#contact">Contact me</a>
+          <a class="btn" href="https://www.linkedin.com/in/kpranavsai" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn" href="https://github.com/pranav3705" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
     </div>
-  </section>
-
-  <div class="pipeline" role="img" aria-label="Medallion pipeline: 12+ sources into Bronze raw, Silver validated, Gold curated layers">
-    <div class="pipe-row">
-      <div class="stage src"><span class="name">sources</span><span class="desc">12+ healthcare &amp; claims systems</span></div>
-      <div class="stage bronze"><span class="name">bronze</span><span class="desc">raw ingestion · Auto Loader · CDC</span></div>
-      <div class="stage silver"><span class="name">silver</span><span class="desc">validated · deduped · schema checks</span></div>
-      <div class="stage gold"><span class="name">gold</span><span class="desc">curated reporting datasets</span></div>
-    </div>
-    <div class="pipe-foot">ADLS Gen2 + Delta Lake · orchestrated with ADF &amp; Databricks Workflows · governed in Unity Catalog</div>
   </div>
 
-  <section aria-labelledby="impact">
-    <h2 id="impact">Run stats <span class="mono">// from production work</span></h2>
-    <div class="metrics">
-      <div class="metric"><span class="num">50<small>GB/day</small></span><span class="what">healthcare &amp; claims data processed from 12+ sources</span></div>
-      <div class="metric"><span class="num">~40<small>%</small></span><span class="what">less batch time with Auto Loader and CDC loads</span></div>
-      <div class="metric"><span class="num">100<small>+</small></span><span class="what">validation and reconciliation rules</span></div>
-      <div class="metric"><span class="num">8M<small>+/day</small></span><span class="what">banking transactions on Amazon EMR</span></div>
-      <div class="metric"><span class="num">~30<small>%</small></span><span class="what">faster Spark jobs through partitioning &amp; tuning</span></div>
+  <section class="explorer" id="pipelines" aria-labelledby="pipe-h">
+    <div class="inner explorer-head">
+      <h2 id="pipe-h">See how I move data from raw to ready</h2>
+      <div class="intro"><p class="lead">Choose a pipeline, then a stage, to read what I did there. The moving records are an illustration.</p><button class="btn small" id="pause" type="button">Pause animation</button></div>
+      <div class="picker" role="group" aria-label="Pipeline">
+        <button type="button" aria-pressed="true"><b>Healthcare lakehouse</b><span>DXC Technology, Azure</span></button>
+        <button type="button" aria-pressed="false"><b>Banking data lake</b><span>ICICI Bank, AWS</span></button>
+        <button type="button" aria-pressed="false"><b>Snowflake ELT</b><span>Personal project</span></button>
+        <button type="button" aria-pressed="false"><b>Kafka streaming</b><span>Personal project</span></button>
+      </div>
     </div>
-  </section>
-
-  <section id="experience" aria-labelledby="exp-h">
-    <h2 id="exp-h">Experience <span class="mono">// job log</span></h2>
-    <div class="log">
-      <article class="job current">
-        <div class="job-head">
-          <h3>Azure Databricks Data Engineer <span class="at">· DXC Technology</span></h3>
-          <span class="when">Nov 2024 – Present · USA</span>
+    <div class="stream">
+      <canvas id="flow" aria-hidden="true"></canvas>
+    </div>
+    <div class="inner">
+      <ol class="stages" id="stages" aria-label="Stages"></ol>
+      <div class="detail">
+        <div class="now" aria-live="polite">
+          <h3 id="d-title">Incremental ingestion</h3>
+          <p id="d-text">Databricks Auto Loader and CDC-based loads pick up only changed records, using checkpointing and schema controls. This cut batch-processing time by about 40%.</p>
+          <p class="tools" id="d-tools">Auto Loader, CDC, Azure Databricks</p>
         </div>
-        <div class="project">Enterprise Healthcare Data Intelligence &amp; Lakehouse Platform</div>
-        <ul>
-          <li>Develop and support Azure Databricks ETL/ELT pipelines with PySpark, Spark SQL and ADF, processing 50+ GB of healthcare and claims data daily from 12+ source systems.</li>
-          <li>Designed Bronze, Silver and Gold layers in ADLS Gen2 and Delta Lake to separate raw ingestion, validated transformations and curated reporting data.</li>
-          <li>Implemented incremental ingestion with Auto Loader and CDC loads, cutting batch-processing time by about 40%.</li>
-          <li>Tuned Spark and Delta queries with partitioning, compaction, OPTIMIZE and Z-ORDER; built 100+ validation rules covering reconciliation, duplicates and schema checks.</li>
-          <li>Organized curated datasets in Unity Catalog with lineage and role-based access; diagnosed production failures with Azure Monitor and Log Analytics.</li>
-        </ul>
-        <div class="tags"><span class="tag">Azure Databricks</span><span class="tag">PySpark</span><span class="tag">Delta Lake</span><span class="tag">Auto Loader</span><span class="tag">ADF</span><span class="tag">ADLS Gen2</span><span class="tag">Unity Catalog</span><span class="tag">Azure DevOps</span></div>
-      </article>
-
-      <article class="job">
-        <div class="job-head">
-          <h3>AWS Data Engineer <span class="at">· ICICI Bank</span></h3>
-          <span class="when">Jun 2022 – Nov 2023 · India</span>
+        <div class="across">
+          <h3>Across the whole pipeline</h3>
+          <ul class="chips" id="across"></ul>
         </div>
-        <div class="project">Banking Transaction Analytics &amp; Data Lake Modernization</div>
-        <ul>
-          <li>Built AWS Glue ETL jobs in Python, PySpark and Spark SQL to ingest, clean and validate banking transactions for risk analytics and regulatory reporting.</li>
-          <li>Ran Spark workloads on Amazon EMR over 8M+ transactions a day, reducing job runtime by about 30% through partitioning, caching and query tuning.</li>
-          <li>Organized S3 raw, processed and curated layers; used Apache Iceberg for schema evolution and Athena SQL for reconciliation.</li>
-          <li>Orchestrated Glue and EMR jobs with Airflow DAGs, and configured Reltio MDM match, merge and survivorship rules.</li>
-        </ul>
-        <div class="tags"><span class="tag">AWS Glue</span><span class="tag">S3</span><span class="tag">EMR</span><span class="tag">Athena</span><span class="tag">Iceberg</span><span class="tag">Airflow</span><span class="tag">Reltio MDM</span></div>
-      </article>
+      </div>
+    </div>
+  </section>
 
-      <article class="job">
-        <div class="job-head">
-          <h3>Data Analyst <span class="at">· AllState Solution Pvt Ltd</span></h3>
-          <span class="when">May 2021 – May 2022 · India</span>
+  <section class="block" aria-labelledby="res-h">
+    <div class="inner stack">
+      <h2 id="res-h">Results in production</h2>
+      <div class="results">
+        <div class="compare">
+          <figure>
+            <figcaption><h3>Batch processing, about 40% less time</h3><span class="muted">Auto Loader and CDC-based loads at DXC Technology</span></figcaption>
+            <div class="bars">
+              <span>Before</span><div class="track"><div class="fill before" style="width:80%"></div><span>100</span></div>
+              <span>After</span><div class="track"><div class="fill after" style="width:48%"></div><span>about 60</span></div>
+            </div>
+          </figure>
+          <figure>
+            <figcaption><h3>Spark jobs, about 30% less runtime</h3><span class="muted">Partitioning, caching and query tuning on EMR at ICICI Bank</span></figcaption>
+            <div class="bars">
+              <span>Before</span><div class="track"><div class="fill before" style="width:80%"></div><span>100</span></div>
+              <span>After</span><div class="track"><div class="fill after" style="width:56%"></div><span>about 70</span></div>
+            </div>
+          </figure>
+          <p class="muted">Bars show relative time, with the starting point set to 100.</p>
         </div>
-        <div class="project">Insurance Claims Reporting &amp; Data Warehouse Modernization</div>
-        <ul>
-          <li>Supported ETL pipelines for claims, policy and customer data using Python and SQL.</li>
-          <li>Profiled data and ran quality checks for duplicate, missing and inconsistent records before loading reporting tables.</li>
-          <li>Helped build fact and dimension tables, SQL views and stored procedures for insurance reporting.</li>
-        </ul>
-        <div class="tags"><span class="tag">SQL Server</span><span class="tag">Azure SQL</span><span class="tag">Python</span><span class="tag">Power BI</span></div>
-      </article>
+        <dl class="scale">
+          <div><dt>50+ GB</dt><dd class="muted">healthcare and claims data processed a day, from 12+ source systems</dd></div>
+          <div><dt>8M+</dt><dd class="muted">banking transaction records processed a day on Amazon EMR</dd></div>
+          <div><dt>100+</dt><dd class="muted">validation rules supported across healthcare datasets</dd></div>
+        </dl>
+      </div>
     </div>
   </section>
 
-  <section id="projects" aria-labelledby="proj-h">
-    <h2 id="proj-h">Projects <span class="mono">// personal builds</span></h2>
-    <div class="projects">
-      <article class="card">
-        <span class="badge">Personal project</span>
-        <h3>S3-to-Snowflake ELT &amp; Analytics Reporting</h3>
-        <div class="flow">S3 CSV <i>→</i> Snowpipe <i>→</i> streams/tasks <i>→</i> dbt marts <i>→</i> dashboards</div>
-        <p>Loaded CSV files from Amazon S3 into Snowflake with Snowpipe, Python and stages. Processed them with streams, tasks and dynamic tables, then modeled staging, mart and incremental layers in dbt with tests, snapshots and docs. Tuned warehouse workloads for reporting.</p>
-        <div class="tags"><span class="tag">Snowflake</span><span class="tag">dbt</span><span class="tag">Snowpipe</span><span class="tag">Python</span></div>
-      </article>
-      <article class="card">
-        <span class="badge">Personal project</span>
-        <h3>GCP + Kafka Event Streaming</h3>
-        <div class="flow">Kafka producer <i>→</i> consumer <i>→</i> Dataflow <i>→</i> BigQuery</div>
-        <p>Built a Kafka producer and consumer flow for JSON events and processed the messages through Dataflow into BigQuery, with monitoring and recovery controls.</p>
-        <div class="tags"><span class="tag">Kafka</span><span class="tag">Pub/Sub</span><span class="tag">Dataflow</span><span class="tag">BigQuery</span></div>
-      </article>
-    </div>
-  </section>
-
-  <section id="skills" aria-labelledby="skills-h">
-    <h2 id="skills-h">Skills <span class="mono">// schema</span></h2>
-    <div class="skills">
-      <div class="skill-group"><span class="label"><span>›</span> Core engineering</span><div class="tags"><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">PySpark</span><span class="tag">Apache Spark</span><span class="tag">Spark SQL</span><span class="tag">ETL/ELT</span><span class="tag">CDC</span></div></div>
-      <div class="skill-group"><span class="label"><span>›</span> Cloud (professional)</span><div class="tags"><span class="tag">Azure Databricks</span><span class="tag">ADF</span><span class="tag">ADLS Gen2</span><span class="tag">Delta Lake</span><span class="tag">AWS Glue</span><span class="tag">S3</span><span class="tag">EMR</span><span class="tag">Athena</span></div></div>
-      <div class="skill-group"><span class="label"><span>›</span> Orchestration</span><div class="tags"><span class="tag">Apache Airflow</span><span class="tag">Azure Data Factory</span><span class="tag">Databricks Workflows</span><span class="tag">AWS Glue Jobs</span></div></div>
-      <div class="skill-group"><span class="label"><span>›</span> Data modeling</span><div class="tags"><span class="tag">Dimensional modeling</span><span class="tag">Star schema</span><span class="tag">Fact &amp; dimension tables</span><span class="tag">SCD Type 1 &amp; 2</span></div></div>
-      <div class="skill-group"><span class="label"><span>›</span> Warehousing</span><div class="tags"><span class="tag">Lakehouse</span><span class="tag">Curated data layers</span><span class="tag">Apache Iceberg</span><span class="tag">SQL transformations</span></div></div>
-      <div class="skill-group"><span class="label"><span>›</span> Quality &amp; governance</span><div class="tags"><span class="tag">SQL reconciliation</span><span class="tag">Data validation</span><span class="tag">Data profiling</span><span class="tag">Unity Catalog</span><span class="tag">Lineage</span></div></div>
-      <div class="skill-group"><span class="label"><span>›</span> DevOps &amp; monitoring</span><div class="tags"><span class="tag">Git</span><span class="tag">Azure DevOps</span><span class="tag">CI/CD</span><span class="tag">Azure Monitor</span><span class="tag">Production troubleshooting</span></div></div>
-      <div class="skill-group"><span class="label"><span>›</span> Personal projects</span><div class="tags"><span class="tag">Snowflake</span><span class="tag">dbt</span><span class="tag">Kafka</span><span class="tag">Dataflow</span><span class="tag">BigQuery</span><span class="tag">Pub/Sub</span></div></div>
-    </div>
-  </section>
-
-  <section aria-labelledby="edu-h">
-    <h2 id="edu-h">Education</h2>
-    <div class="edu">
+  <section class="block" id="experience" aria-labelledby="exp-h">
+    <div class="inner stack">
+      <h2 id="exp-h">Experience</h2>
       <div>
-        <h3>Master of Science in Computer Science</h3>
-        <p>Lawrence Technological University · Southfield, Michigan</p>
+        <article class="job is-gold">
+          <div class="side"><b>Client: DXC Technology</b><span>Nov 2024 to present</span><span>USA</span></div>
+          <div class="main">
+            <div><h3>Azure Databricks Data Engineer</h3><p class="muted">Enterprise Healthcare Data Intelligence &amp; Lakehouse Platform</p></div>
+            <ul>
+              <li>Developed and supported Databricks ETL/ELT pipelines with PySpark, Spark SQL and Azure Data Factory, processing over 50 GB of healthcare and claims data daily from 12+ source systems.</li>
+              <li>Designed Bronze, Silver and Gold layers in ADLS Gen2 and Delta Lake, separating raw ingestion, validated transformations and curated reporting datasets.</li>
+              <li>Implemented incremental ingestion with Auto Loader and CDC-based loads, reducing batch-processing time by approximately 40%.</li>
+              <li>Built source-to-target validation, reconciliation, duplicate detection and schema checks, supporting more than 100 validation rules.</li>
+            </ul>
+            <details><summary>Show 5 more</summary>
+              <ul>
+                <li>Orchestrated ingestion and transformation jobs with Azure Data Factory and Databricks Workflows, configuring dependencies, scheduling and execution monitoring.</li>
+                <li>Optimized Spark and Delta Lake queries through partitioning, file compaction, OPTIMIZE, Z-ORDER and SQL tuning.</li>
+                <li>Used Unity Catalog to organize curated datasets, manage metadata and lineage visibility, and apply role-based access controls.</li>
+                <li>Diagnosed production Databricks and ADF failures using job logs, Azure Monitor and Log Analytics, and supported reliable reruns.</li>
+                <li>Maintained version-controlled notebooks and pipelines in Git and Azure DevOps, taking part in peer reviews and CI/CD deployments.</li>
+              </ul>
+            </details>
+          </div>
+        </article>
+        <article class="job is-silver">
+          <div class="side"><b>Client: ICICI Bank</b><span>Jun 2022 to Nov 2023</span><span>India</span></div>
+          <div class="main">
+            <div><h3>AWS Data Engineer</h3><p class="muted">Banking Transaction Analytics &amp; Data Lake Modernization</p></div>
+            <ul>
+              <li>Developed AWS Glue ETL jobs with Python, PySpark and Spark SQL to ingest, clean, enrich and validate banking transactions for risk analytics and regulatory reporting.</li>
+              <li>Built and optimized Spark workloads on Amazon EMR to process over 8 million transaction records daily, reducing job runtime by approximately 30%.</li>
+              <li>Organized S3 raw, processed and curated layers with incremental ingestion and partitioning for historical transaction analysis.</li>
+              <li>Developed Airflow DAGs to orchestrate Glue and EMR workloads, including dependencies, retries and data-validation steps.</li>
+            </ul>
+            <details><summary>Show 4 more</summary>
+              <ul>
+                <li>Wrote Athena SQL over S3 datasets for transaction analysis, reconciliation and investigation of reporting discrepancies.</li>
+                <li>Worked with Apache Iceberg tables for schema evolution, partition management and reliable access to curated datasets.</li>
+                <li>Configured Reltio MDM matching, merging and survivorship rules to consolidate customer master records.</li>
+                <li>Investigated production failures, performed root-cause analysis, and worked with fraud, risk and analytics teams to resolve issues.</li>
+              </ul>
+            </details>
+          </div>
+        </article>
+        <article class="job">
+          <div class="side"><b>Client: AllState Solution Pvt Ltd</b><span>May 2021 to May 2022</span><span>India</span></div>
+          <div class="main">
+            <div><h3>Data Analyst</h3><p class="muted">Insurance Claims Reporting &amp; Data Warehouse Modernization</p></div>
+            <ul>
+              <li>Supported ETL pipelines for insurance claims, policy, customer and reporting datasets, working with senior engineers on preparation and delivery.</li>
+              <li>Used Python and SQL to extract, transform and validate data for business reporting and analysis.</li>
+              <li>Profiled data and ran quality checks for duplicate, missing and inconsistent records before loading reporting tables.</li>
+              <li>Helped develop fact and dimension tables, SQL views, queries and stored procedures for insurance reporting.</li>
+            </ul>
+          </div>
+        </article>
       </div>
-      <span class="when">Dec 2025</span>
     </div>
   </section>
 
-  <section id="contact" class="contact" aria-labelledby="contact-h">
-    <h2 id="contact-h">Let's talk data</h2>
-    <p>I'm looking for Data Engineer roles: remote, hybrid or onsite. Email or LinkedIn is the best way to reach me.</p>
-    <div class="links">
-      <div class="link-row">
-        <div class="meta"><span class="k">Email</span><span class="v" id="email-val">pranavsaik16@gmail.com</span></div>
-        <button class="copy" type="button" id="copy-email" data-copy="pranavsaik16@gmail.com">Copy</button>
-      </div>
-      <div class="link-row">
-        <div class="meta"><span class="k">LinkedIn</span><a class="v" href="https://www.linkedin.com/in/kpranavsai" target="_blank" rel="noopener">linkedin.com/in/kpranavsai</a></div>
-        <button class="copy" type="button" id="copy-li" data-copy="https://www.linkedin.com/in/kpranavsai">Copy</button>
-      </div>
-      <div class="link-row">
-        <div class="meta"><span class="k">GitHub</span><a class="v" href="https://github.com/pranav3705" target="_blank" rel="noopener">github.com/pranav3705</a></div>
-        <button class="copy" type="button" id="copy-gh" data-copy="https://github.com/pranav3705">Copy</button>
+  <section class="block" id="projects" aria-labelledby="proj-h">
+    <div class="inner stack">
+      <div class="head"><h2 id="proj-h">Personal projects</h2><p class="lead">Built on my own, outside client work.</p></div>
+      <div class="projects">
+        <article class="project">
+          <h3>S3-to-Snowflake ELT and Analytics Reporting Pipeline</h3>
+          <ul>
+            <li>Ingested CSV files from Amazon S3 into Snowflake using Snowpipe, Python and stages.</li>
+            <li>Used streams, tasks and dynamic tables for processing, and developed dbt staging, mart and incremental models with tests, snapshots and documentation.</li>
+            <li>Optimized warehouse workloads and prepared curated datasets for dashboard reporting.</li>
+          </ul>
+          <div class="row"><a class="btn small" href="#pipelines" data-pipe="2">View this pipeline</a></div>
+        </article>
+        <article class="project">
+          <h3>GCP and Kafka Streaming</h3>
+          <ul>
+            <li>Built a Kafka producer and consumer flow for JSON events.</li>
+            <li>Processed messages through Dataflow into BigQuery.</li>
+            <li>Added monitoring and recovery controls.</li>
+          </ul>
+          <div class="row"><a class="btn small" href="#pipelines" data-pipe="3">View this pipeline</a></div>
+        </article>
       </div>
     </div>
   </section>
 
-  <footer>
-    <span>© 2026 Pranav Konreddy</span>
-    <span>pipeline status: <span style="color:var(--ok)">SUCCEEDED</span></span>
-  </footer>
-</div>
+  <section class="block" id="skills" aria-labelledby="skills-h">
+    <div class="inner stack">
+      <div class="head"><h2 id="skills-h">Skills, and where I used them</h2><p class="lead">Recruiting? Paste your job description and the table keeps only the skills it mentions. Your text stays in your browser.</p></div>
+      <div class="matcher">
+        <label for="jd">Job description or skill</label>
+        <textarea id="jd" rows="3" placeholder="Paste a job description, or type a skill such as Airflow"></textarea>
+        <div class="row">
+          <button class="btn small" id="jd-sample" type="button">Try an example</button>
+          <button class="btn small" id="jd-clear" type="button" hidden>Clear</button>
+          <span class="muted" id="jd-status" role="status"></span>
+        </div>
+      </div>
+      <div class="legend"><span><i class="dot"></i>Used in a client role</span><span><i class="dot own"></i>Used in a personal project</span></div>
+      <div class="matrix-wrap">
+        <table class="matrix" id="matrix">
+          <thead><tr><th scope="col">Skill</th><th scope="col">DXC<small>Azure</small></th><th scope="col">ICICI<small>AWS</small></th><th scope="col">AllState<small>Analyst</small></th><th scope="col">Own<small>projects</small></th></tr></thead>
+          <tbody id="matrix-body"></tbody>
+        </table>
+      </div>
+      <noscript>Python, SQL, PySpark, Spark SQL, Azure Databricks, Delta Lake, Azure Data Factory, ADLS Gen2, Unity Catalog, AWS Glue, Amazon S3, EMR, Athena, Apache Iceberg, Apache Airflow. Personal projects: Snowflake, dbt, Kafka, Dataflow, BigQuery.</noscript>
+    </div>
+  </section>
 
-<script>
-document.querySelectorAll('.copy').forEach(function (btn) {
-  btn.addEventListener('click', function () {
-    var text = btn.getAttribute('data-copy');
-    var done = function () { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy'; }, 1600); };
-    var fallback = function () {
-      var target = btn.parentElement.querySelector('.v');
-      var range = document.createRange(); range.selectNodeContents(target);
-      var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(range);
-      btn.textContent = 'Selected';
-      setTimeout(function () { btn.textContent = 'Copy'; }, 1600);
-    };
-    try {
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(text).then(done, fallback);
-      } else { fallback(); }
-    } catch (e) { fallback(); }
-  });
-});
-</script>
+  <section class="block" id="ask" aria-labelledby="ask-h">
+    <div class="inner stack">
+      <div class="head"><h2 id="ask-h">Query my resume</h2><p class="lead">These five tables summarize my resume. Pick a question or write your own SELECT. It runs in your browser.</p></div>
+      <div class="sql">
+        <dl class="schema">
+          <div><dt>experience</dt><dd>role, client, country, domain, start_date, end_date</dd></div>
+          <div><dt>skills</dt><dd>skill, category, used_at, type</dd></div>
+          <div><dt>results</dt><dd>metric, value, client</dd></div>
+          <div><dt>projects</dt><dd>name, type, stack</dd></div>
+          <div><dt>education</dt><dd>degree, school, location, finished</dd></div>
+        </dl>
+        <div class="console">
+          <div class="row">
+            <button class="chip" type="button" data-sql="SELECT skill, COUNT(*) AS clients&#10;FROM skills&#10;WHERE type = 'production'&#10;GROUP BY skill&#10;ORDER BY clients DESC, skill&#10;LIMIT 8">Skills used at the most clients</button>
+            <button class="chip" type="button" data-sql="SELECT metric, value, client&#10;FROM results">Measured results</button>
+            <button class="chip" type="button" data-sql="SELECT role, client, domain, start_date, end_date&#10;FROM experience&#10;ORDER BY start_date DESC">Roles, newest first</button>
+            <button class="chip" type="button" data-sql="SELECT skill, category&#10;FROM skills&#10;WHERE used_at = 'DXC Technology'&#10;  AND category = 'Azure'">Azure skills at DXC</button>
+            <button class="chip" type="button" data-sql="SELECT *&#10;FROM education">Education</button>
+          </div>
+          <label for="sql">Query</label>
+          <textarea id="sql" rows="6" spellcheck="false" autocapitalize="off" autocomplete="off">SELECT skill, COUNT(*) AS clients
+FROM skills
+WHERE type = 'production'
+GROUP BY skill
+ORDER BY clients DESC, skill
+LIMIT 8</textarea>
+          <div class="row">
+            <button class="btn solid small" id="sql-run" type="button">Run query</button>
+            <span class="status" id="sql-status" role="status"></span>
+          </div>
+          <div class="out" id="sql-out" tabindex="0" role="region" aria-label="Query results"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="edu-h">
+    <div class="inner stack">
+      <h2 id="edu-h">Education</h2>
+      <div class="job" style="padding-bottom:0">
+        <div class="side"><b>Lawrence Technological University</b><span>Dec 2025</span><span>Southfield, Michigan</span></div>
+        <div class="main"><h3>Master of Science in Computer Science</h3></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="contact" aria-labelledby="contact-h">
+    <div class="inner contact">
+      <div class="head"><h2 id="contact-h">Hiring a Data Engineer?</h2><p class="lead">Email me or send a message on LinkedIn.</p></div>
+      <dl class="ways">
+        <div><div><dt>Email</dt><dd id="v-email">pranavsaik16@gmail.com</dd></div><button class="btn small" type="button" data-copy="pranavsaik16@gmail.com" data-from="v-email">Copy</button></div>
+        <div><div><dt>LinkedIn</dt><dd id="v-li"><a href="https://www.linkedin.com/in/kpranavsai" target="_blank" rel="noopener">linkedin.com/in/kpranavsai</a></dd></div><button class="btn small" type="button" data-copy="https://www.linkedin.com/in/kpranavsai" data-from="v-li">Copy</button></div>
+        <div><div><dt>GitHub</dt><dd id="v-gh"><a href="https://github.com/pranav3705" target="_blank" rel="noopener">github.com/pranav3705</a></dd></div><button class="btn small" type="button" data-copy="https://github.com/pranav3705" data-from="v-gh">Copy</button></div>
+      </dl>
+    </div>
+  </section>
+</main>
+<footer><div class="inner">Pranav Konreddy, 2026</div></footer>
+<script src="app.js"></script>
 </body>
 </html>
